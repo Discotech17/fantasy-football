@@ -279,17 +279,6 @@ EVERYTHING AFTER HERE IS MOBILE
     border: 1px solid black;
     border-radius: 20px;
   }
-
-  .trianglePage {
-    clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-    background: var(--background);
-    position: absolute;
-    z-index: 999;
-    width: 75px;
-    height: 75px;
-    bottom: 0;
-    right: 0;
-  }
   
   .standingsContainer::after,
   .standingsContainer::before {
@@ -316,9 +305,21 @@ EVERYTHING AFTER HERE IS MOBILE
 
   .standingsBoard {
     display: grid;
+    height: 100%;
     margin-top: 20px;
     position: relative;
     z-index: 1;
+  }
+
+  .trianglePage {
+    clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+    background: var(--background);
+    position: absolute;
+    z-index: 999;
+    width: 75px;
+    height: 75px;
+    bottom: 0;
+    right: 0;
   }
 
   .standingsTitle {
