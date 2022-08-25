@@ -16,7 +16,7 @@ function App() {
 		<div className="appContainer" data-theme={theme}>
 			<div className="appContainerTwo">
 				<section className="section champ">
-					<label htmlFor="toggleTheme" className="toggler">
+					{/*}<label htmlFor="toggleTheme" className="toggler">
 						<input
 							onClick={() => switchTheme()}
 							type="checkbox"
@@ -25,7 +25,7 @@ function App() {
 						<span className="ball" />
 						<i className="light" />
 						<i className="dark" />
-					</label>
+	</label>*/}
 					<Champ />
 				</section>
 				<section className="section standings">

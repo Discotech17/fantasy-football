@@ -5,25 +5,17 @@ body {
   display: flex;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+@keyframes reveal {
+  0% { 
+    transform: none;
+    opacity: 0;
   }
-
-  25% {
-    background-position: 25% 50%;
-  }
-
   50% {
-    background-position: 100% 50%;
+    opacity: .5;
   }
-
-  75% {
-    background-position: 25% 50%;
-  }
-
   100% {
-    background-position: 0% 50%;
+    transform: none;
+    opacity: 1;
   }
 }
 
@@ -96,10 +88,8 @@ body {
   height: 80%;
   position: relative;
   background: var(--cardBG);
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+  border: 1px solid black;
+  border-radius: 20px;
 }
 
 .triangleContainer {
@@ -165,14 +155,11 @@ body {
   background-color: var(--cardBG);
   border: 1px solid black;
   border-radius: 20px;
-  border-bottom-right-radius: 5px;
 }
 
 .trianglePage {
   clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-  background: linear-gradient(+90deg, var(--cardBG), white);
-  background-size: 400% 400%;
-  animation: gradient 5s ease infinite;
+  background: var(--background);
   position: absolute;
   width: 200px;
   height: 200px;
@@ -220,6 +207,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  
 }
 
 .standingsRecordHeader {
@@ -242,7 +230,10 @@ body {
 
 .standingsRecords {}
 
-
+/*
+INTO MOBILE CSS 
+EVERYTHING AFTER HERE IS MOBILE
+*/
 
 @media screen and (max-width: 600px) {
 
@@ -251,13 +242,11 @@ body {
   .champContainer {
     width: 80%;
     height: 90%;
-    margin-top: 15%;
+    margin-top: 5%;
     position: relative;
     background: var(--cardBG);
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    border: 1px solid black;
+    border-radius: 20px;
   }
 
   .champName {
@@ -293,12 +282,11 @@ body {
 
   .trianglePage {
     clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-    background: linear-gradient(+90deg, var(--cardBG), white);
-    background-size: 400% 400%;
-    animation: gradient 5s ease infinite;
+    background: var(--background);
     position: absolute;
-    width: 100px;
-    height: 100px;
+    z-index: 999;
+    width: 75px;
+    height: 75px;
     bottom: 0;
     right: 0;
   }
@@ -308,27 +296,29 @@ body {
     background-color: white;
     content: "";
     display: block;
-    height: 101px;
+    height: 57px;
     border-top-right-radius: 5px;
     position: absolute;
-    width: 2px;
+    width: 3px;
   }
   
   .standingsContainer::after {
     bottom: -2px;
-    right: -1px;
-    width: 101px;
+    right: -2px;
+    width: 51px;
     height: 2px;
   }
   
   .standingsContainer::before {
     bottom: -1px;
-    right: -1px
+    right: -2px
   }
 
-  .standingsBorderEast {
+  .standingsBoard {
     display: grid;
     margin-top: 20px;
+    position: relative;
+    z-index: 1;
   }
 
   .standingsTitle {
@@ -345,6 +335,10 @@ body {
     margin-top: 50px;
   }
 
+  .divisionSwap {
+    background-size: 100% 400%;
+  }
+
   .standingsRecordHeader {
     display: inline-flex;
     width: 100%;
@@ -357,7 +351,10 @@ body {
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
+    z-index: 5;
     margin: 0;
+    height: 270px;
   }
 
   .standingsTeams {
@@ -365,7 +362,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
     margin: 0;
+    margin-bottom: 40%;
   }
 
   .standingsRecords {
@@ -373,6 +373,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    margin-bottom: 40%;
   }
 
   .standingsRecordsInput {
@@ -404,7 +406,8 @@ body {
     left: 3%;
   }
 
-  *{
-    outline: 1px solid red;
+  * {
+    outline: 1px red solid;
   }
+
 }

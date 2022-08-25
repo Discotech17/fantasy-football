@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Standings() {
-	const data = [
+	const [data, setData] = useState([
 		{
-			key: 1,
+			key: 0,
 			name: 'Cody',
 			record: {
 				wins: 4,
@@ -13,7 +13,7 @@ function Standings() {
 			division: 'East',
 		},
 		{
-			key: 2,
+			key: 1,
 			name: 'Jeff',
 			record: {
 				wins: 3,
@@ -23,7 +23,7 @@ function Standings() {
 			division: 'West',
 		},
 		{
-			key: 3,
+			key: 2,
 			name: 'Matt',
 			record: {
 				wins: 5,
@@ -33,7 +33,7 @@ function Standings() {
 			division: 'East',
 		},
 		{
-			key: 4,
+			key: 3,
 			name: 'Gavin',
 			record: {
 				wins: 3,
@@ -42,53 +42,75 @@ function Standings() {
 			teamName: 'Team Gavin',
 			division: 'West',
 		},
-	]
+	])
 
 	const [division, setDivision] = useState(true)
 	const [editing, setEditing] = useState(false)
-	const [wins, setWins] = useState('')
-	const [win, setWin] = useState()
-	const [lose, setLose] = useState()
-	const [losses, setLosses] = useState([])
+	var win
+	var lose
 
 	const eastDivision = []
 		.concat(data)
 		.filter((item) => item.division === 'East')
-		.sort((a, b) => (a.record.wins < b.record.wins ? 1 : -1))
+		.sort((a, b) =>
+			a.record.wins >= b.record.wins && a.record.losses <= b.record.losses
+				? -1
+				: 1
+		)
 
 	const westDivision = []
 		.concat(data)
 		.filter((item) => item.division === 'West')
-		.sort((a, b) => (a.record.wins < b.record.wins ? 1 : -1))
-		.sort((a, b) => (a.record.losses > b.record.losses ? 1 : -1))
+		.sort((a, b) =>
+			a.record.wins >= b.record.wins && a.record.losses <= b.record.losses
+				? -1
+				: 1
+		)
 
-	function editEastStandings() {
+	function editStandings(e) {
+		e.preventDefault()
 		setEditing(true)
 	}
 
-	function submitEastStandings() {
-		console.log(wins, losses)
+	function submitStandings(e, item, win, lose) {
+		e.preventDefault()
+		const newData = [...data]
+		newData.splice(item.key, 1, item)
+		console.log(newData)
+		setData(newData)
 		setEditing(false)
+	}
+
+	function updateRecord(item, number, winLose) {
+		const newData = [...data]
+		console.log(item)
+		let person = data.find((obj) => obj.name === item.name)
+		winLose ? (person.record.wins = number) : (person.record.losses = number)
+		newData.splice(person.key, 1, person)
 	}
 
 	return (
 		<div className="standingsContainer">
 			{division ? (
-				<div className="standingsBoardEast">
-					<div className="trianglePage" />
+				<div className="standingsBoard">
+					<div
+						className="trianglePage"
+						onClick={editing ? null : () => setDivision(!division)}
+					/>
 					<div className="standingsTitle">
 						<h1>Standings</h1>
 					</div>
 					{editing ? (
 						<div className="standingsUpdate">
 							<button
+								form="record"
+								type="submit"
 								style={{
 									backgroundColor: 'lightblue',
 									width: '100%',
 									outline: 'none',
 									border: 'none',
 								}}
-								onClick={() => submitEastStandings()}
 							>
 								Submit
 							</button>
@@ -102,7 +124,7 @@ function Standings() {
 									outline: 'none',
 									border: 'none',
 								}}
-								onClick={() => editEastStandings()}
+								onClick={(e) => editStandings(e)}
 							/>
 						</div>
 					)}
@@ -119,37 +141,47 @@ function Standings() {
 						</div>
 						<div className="standingRecordContainer">
 							<div className="standingsTeams">
-								{eastDivision.map((item) => (
-									<p>{item.teamName}</p>
+								{eastDivision.map((item, index) => (
+									<p key={index}>{item.teamName}</p>
 								))}
 							</div>
 							{editing ? (
 								<div className="standingsRecords">
-									{eastDivision.map((item) => (
+									{eastDivision.map((item, index) => (
 										<>
-											<div className="standingsRecordsInput">
+											<form
+												id="record"
+												onSubmit={(e) => submitStandings(e, item, win, lose)}
+												className="standingsRecordsInput"
+											>
 												<input
 													type="text"
 													style={{ width: '25px' }}
 													defaultValue={item.record.wins}
+													key={index}
 													value={win}
-													onChange={(wins) => setWins(wins)}
+													onChange={(win) =>
+														updateRecord(item, win.target.value, true)
+													}
 												/>
 												<input
 													type="text"
 													style={{ width: '25px' }}
 													defaultValue={item.record.losses}
+													key={index}
 													value={lose}
-													onChange={(losses) => setLosses(losses)}
+													onChange={(lose) =>
+														updateRecord(item, lose.target.value, false)
+													}
 												/>
-											</div>
+											</form>
 										</>
 									))}
 								</div>
 							) : (
 								<div className="standingsRecords">
-									{eastDivision.map((item) => (
-										<p>
+									{eastDivision.map((item, index) => (
+										<p key={index}>
 											{item.record.wins}-{item.record.losses}
 										</p>
 									))}
@@ -159,11 +191,42 @@ function Standings() {
 					</div>
 				</div>
 			) : (
-				<div className="standingsBoardWest">
-					<div className="trianglePage" />
+				<div className="standingsBoard">
+					<div
+						className="trianglePage"
+						onClick={editing ? null : () => setDivision(!division)}
+					/>
 					<div className="standingsTitle">
 						<h1>Standings</h1>
 					</div>
+					{editing ? (
+						<div className="standingsUpdate">
+							<button
+								form="record"
+								type="submit"
+								style={{
+									backgroundColor: 'lightblue',
+									width: '100%',
+									outline: 'none',
+									border: 'none',
+								}}
+							>
+								Submit
+							</button>
+						</div>
+					) : (
+						<div className="editStandings">
+							<button
+								style={{
+									backgroundColor: 'transparent',
+									width: '100%',
+									outline: 'none',
+									border: 'none',
+								}}
+								onClick={(e) => editStandings(e)}
+							/>
+						</div>
+					)}
 					<div
 						className="divisionSwap"
 						onClick={editing ? null : () => setDivision(!division)}
@@ -177,17 +240,52 @@ function Standings() {
 						</div>
 						<div className="standingRecordContainer">
 							<div className="standingsTeams">
-								{westDivision.map((item) => (
-									<p>{item.teamName}</p>
+								{westDivision.map((item, index) => (
+									<p key={index}>{item.teamName}</p>
 								))}
 							</div>
-							<div className="standingsRecords">
-								{westDivision.map((item) => (
-									<p>
-										{item.record.wins}-{item.record.losses}
-									</p>
-								))}
-							</div>
+							{editing ? (
+								<div className="standingsRecords">
+									{westDivision.map((item, index) => (
+										<>
+											<form
+												id="record"
+												onSubmit={(e) => submitStandings(e, item, win, lose)}
+												className="standingsRecordsInput"
+											>
+												<input
+													type="text"
+													style={{ width: '25px' }}
+													defaultValue={item.record.wins}
+													value={win}
+													key={index}
+													onChange={(win) =>
+														updateRecord(item, win.target.value, true)
+													}
+												/>
+												<input
+													type="text"
+													style={{ width: '25px' }}
+													defaultValue={item.record.losses}
+													key={index}
+													value={lose}
+													onChange={(lose) =>
+														updateRecord(item, lose.target.value, false)
+													}
+												/>
+											</form>
+										</>
+									))}
+								</div>
+							) : (
+								<div className="standingsRecords">
+									{westDivision.map((item, index) => (
+										<p key={index}>
+											{item.record.wins}-{item.record.losses}
+										</p>
+									))}
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
