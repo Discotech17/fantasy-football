@@ -93,10 +93,6 @@ function Standings() {
 		<div className="standingsContainer">
 			{division ? (
 				<div className="standingsBoard">
-					<div
-						className="trianglePage"
-						onClick={editing ? null : () => setDivision(!division)}
-					/>
 					<div className="standingsTitle">
 						<h1>Standings</h1>
 					</div>
@@ -128,6 +124,10 @@ function Standings() {
 							/>
 						</div>
 					)}
+					<div
+						className="trianglePage"
+						onClick={editing ? null : () => setDivision(!division)}
+					/>
 					<div
 						className="divisionSwap"
 						onClick={editing ? null : () => setDivision(!division)}
@@ -192,10 +192,6 @@ function Standings() {
 				</div>
 			) : (
 				<div className="standingsBoard">
-					<div
-						className="trianglePage"
-						onClick={editing ? null : () => setDivision(!division)}
-					/>
 					<div className="standingsTitle">
 						<h1>Standings</h1>
 					</div>
@@ -227,6 +223,10 @@ function Standings() {
 							/>
 						</div>
 					)}
+					<div
+						className="trianglePage"
+						onClick={editing ? null : () => setDivision(!division)}
+					/>
 					<div
 						className="divisionSwap"
 						onClick={editing ? null : () => setDivision(!division)}

@@ -19,6 +19,18 @@ body {
   }
 }
 
+@keyframes gradient {
+  0% { 
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .appContainer {
   background-color: var(--background);
   overflow-y: auto;
@@ -231,8 +243,12 @@ body {
 .standingsRecords {}
 
 /*
+*********************************
+*********************************
 INTO MOBILE CSS 
 EVERYTHING AFTER HERE IS MOBILE
+*********************************
+*********************************
 */
 
 @media screen and (max-width: 600px) {
@@ -254,8 +270,14 @@ EVERYTHING AFTER HERE IS MOBILE
     justify-content: center;
     align-items: center;
     margin-top: 60%;
-    font-size: 25px;
+    height: 20%;
+    font-size: 50px;
     font-weight: 700;
+    background: linear-gradient(-45deg, #5433FF, #20BDFF, #A5FECB);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s linear infinite;
   }
 
   .champMessage {
@@ -266,10 +288,16 @@ EVERYTHING AFTER HERE IS MOBILE
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 20%;
-    font-size: 20px;
+    font-size: 25px;
+    background: linear-gradient(45deg, #5433FF, #20BDFF, #A5FECB);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s linear infinite;
   }
 
-  .standings {}
+  .standings {
+  }
 
   .standingsContainer {
     width: 80%;
@@ -285,7 +313,7 @@ EVERYTHING AFTER HERE IS MOBILE
     background-color: white;
     content: "";
     display: block;
-    height: 57px;
+    height: 76px;
     border-top-right-radius: 5px;
     position: absolute;
     width: 3px;
@@ -294,21 +322,18 @@ EVERYTHING AFTER HERE IS MOBILE
   .standingsContainer::after {
     bottom: -2px;
     right: -2px;
-    width: 51px;
-    height: 2px;
+    width: 76px;
+    height: 3px;
   }
   
   .standingsContainer::before {
-    bottom: -1px;
+    bottom: -2px;
     right: -2px
   }
 
   .standingsBoard {
-    display: grid;
+    display: flexbox;
     height: 100%;
-    margin-top: 20px;
-    position: relative;
-    z-index: 1;
   }
 
   .trianglePage {
@@ -326,18 +351,25 @@ EVERYTHING AFTER HERE IS MOBILE
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 0;
+    height: 20%;
   }
 
   .standingsDivision {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 
   .divisionSwap {
-    background-size: 100% 400%;
+    height: 80%;
+  }
+
+  .divisionSwap:not(:active) {
+    animation: reveal 3s .05s linear forwards;
   }
 
   .standingsRecordHeader {
@@ -345,6 +377,8 @@ EVERYTHING AFTER HERE IS MOBILE
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 
   .standingRecordContainer {
@@ -352,10 +386,8 @@ EVERYTHING AFTER HERE IS MOBILE
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
-    position: relative;
-    z-index: 5;
     margin: 0;
-    height: 270px;
+    padding-top: 5%;
   }
 
   .standingsTeams {
@@ -363,10 +395,7 @@ EVERYTHING AFTER HERE IS MOBILE
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 1;
     margin: 0;
-    margin-bottom: 40%;
   }
 
   .standingsRecords {
@@ -375,7 +404,6 @@ EVERYTHING AFTER HERE IS MOBILE
     align-items: center;
     justify-content: center;
     margin: 0;
-    margin-bottom: 40%;
   }
 
   .standingsRecordsInput {
@@ -386,29 +414,29 @@ EVERYTHING AFTER HERE IS MOBILE
   }
 
   .standingsUpdate {
-    width: 75px;
-    height: 25px;
+    width: 25%;
+    height: 5%;
     display: flex;
     position: absolute;
-    top: 7%;
-    right: 3%;
+    top: 7.5%;
+    right: 5%;
     background-color: transparent;
     border: none;
   }
 
   .editStandings {
-    width: 75px;
-    height: 25px;
+    width: 25%;
+    height: 5%;
     background-color: transparent;
     border: none;
     display: flex;
     position: absolute;
-    top: 7%;
-    left: 3%;
+    top: 7.5%;
+    left: 5%;
   }
 
   * {
-    outline: 1px red solid;
+    outline: 1px solid red
   }
 
 }
