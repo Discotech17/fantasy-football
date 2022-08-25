@@ -1,48 +1,24 @@
 import React, { useState, useEffect } from 'react'
+import startFireBase from '../firebase.js'
+import { ref, onValue, update } from 'firebase/database'
+
+const db = startFireBase()
 
 function Standings() {
-	const [data, setData] = useState([
-		{
-			key: 0,
-			name: 'Cody',
-			record: {
-				wins: 4,
-				losses: 2,
-			},
-			teamName: 'Team Cody',
-			division: 'East',
-		},
-		{
-			key: 1,
-			name: 'Jeff',
-			record: {
-				wins: 3,
-				losses: 2,
-			},
-			teamName: 'Team Jeff',
-			division: 'West',
-		},
-		{
-			key: 2,
-			name: 'Matt',
-			record: {
-				wins: 5,
-				losses: 1,
-			},
-			teamName: 'Team Matt',
-			division: 'East',
-		},
-		{
-			key: 3,
-			name: 'Gavin',
-			record: {
-				wins: 3,
-				losses: 5,
-			},
-			teamName: 'Team Gavin',
-			division: 'West',
-		},
-	])
+	const [tableData, setTableData] = useState([])
+
+	useEffect(() => {
+		const dbRef = ref(db, '/')
+
+		onValue(dbRef, (snapshot) => {
+			let dataRecords = []
+			snapshot.forEach((childSnapshot) => {
+				let data = childSnapshot.val()
+				dataRecords.push(data)
+			})
+			setTableData(dataRecords)
+		})
+	}, [])
 
 	const [division, setDivision] = useState(true)
 	const [editing, setEditing] = useState(false)
@@ -50,7 +26,7 @@ function Standings() {
 	var lose
 
 	const eastDivision = []
-		.concat(data)
+		.concat(tableData)
 		.filter((item) => item.division === 'East')
 		.sort((a, b) =>
 			a.record.wins >= b.record.wins && a.record.losses <= b.record.losses
@@ -59,7 +35,7 @@ function Standings() {
 		)
 
 	const westDivision = []
-		.concat(data)
+		.concat(tableData)
 		.filter((item) => item.division === 'West')
 		.sort((a, b) =>
 			a.record.wins >= b.record.wins && a.record.losses <= b.record.losses
@@ -74,17 +50,21 @@ function Standings() {
 
 	function submitStandings(e, item, win, lose) {
 		e.preventDefault()
-		const newData = [...data]
-		newData.splice(item.key, 1, item)
-		console.log(newData)
-		setData(newData)
+
+		tableData.forEach((team) =>
+			update(ref(db, `/${team.key}`), {
+				record: {
+					wins: team.record.wins,
+					losses: team.record.losses,
+				},
+			})
+		)
 		setEditing(false)
 	}
 
 	function updateRecord(item, number, winLose) {
-		const newData = [...data]
-		console.log(item)
-		let person = data.find((obj) => obj.name === item.name)
+		const newData = [...tableData]
+		let person = tableData.find((obj) => obj.key === item.key)
 		winLose ? (person.record.wins = number) : (person.record.losses = number)
 		newData.splice(person.key, 1, person)
 	}
@@ -141,13 +121,13 @@ function Standings() {
 						</div>
 						<div className="standingRecordContainer">
 							<div className="standingsTeams">
-								{eastDivision.map((item, index) => (
-									<p key={index}>{item.teamName}</p>
+								{eastDivision.map((item) => (
+									<p key={item.key}>{item.teamName}</p>
 								))}
 							</div>
 							{editing ? (
 								<div className="standingsRecords">
-									{eastDivision.map((item, index) => (
+									{eastDivision.map((item) => (
 										<>
 											<form
 												id="record"
@@ -158,8 +138,8 @@ function Standings() {
 													type="text"
 													style={{ width: '25px' }}
 													defaultValue={item.record.wins}
-													key={index}
 													value={win}
+													key={item.teamName}
 													onChange={(win) =>
 														updateRecord(item, win.target.value, true)
 													}
@@ -168,8 +148,8 @@ function Standings() {
 													type="text"
 													style={{ width: '25px' }}
 													defaultValue={item.record.losses}
-													key={index}
 													value={lose}
+													key={item.name}
 													onChange={(lose) =>
 														updateRecord(item, lose.target.value, false)
 													}
@@ -180,8 +160,8 @@ function Standings() {
 								</div>
 							) : (
 								<div className="standingsRecords">
-									{eastDivision.map((item, index) => (
-										<p key={index}>
+									{eastDivision.map((item) => (
+										<p key={item.key}>
 											{item.record.wins}-{item.record.losses}
 										</p>
 									))}
@@ -240,13 +220,13 @@ function Standings() {
 						</div>
 						<div className="standingRecordContainer">
 							<div className="standingsTeams">
-								{westDivision.map((item, index) => (
-									<p key={index}>{item.teamName}</p>
+								{westDivision.map((item) => (
+									<p key={item.key}>{item.teamName}</p>
 								))}
 							</div>
 							{editing ? (
 								<div className="standingsRecords">
-									{westDivision.map((item, index) => (
+									{westDivision.map((item) => (
 										<>
 											<form
 												id="record"
@@ -258,7 +238,7 @@ function Standings() {
 													style={{ width: '25px' }}
 													defaultValue={item.record.wins}
 													value={win}
-													key={index}
+													key={item.key}
 													onChange={(win) =>
 														updateRecord(item, win.target.value, true)
 													}
@@ -267,8 +247,8 @@ function Standings() {
 													type="text"
 													style={{ width: '25px' }}
 													defaultValue={item.record.losses}
-													key={index}
 													value={lose}
+													key={item.key}
 													onChange={(lose) =>
 														updateRecord(item, lose.target.value, false)
 													}
@@ -279,8 +259,8 @@ function Standings() {
 								</div>
 							) : (
 								<div className="standingsRecords">
-									{westDivision.map((item, index) => (
-										<p key={index}>
+									{westDivision.map((item) => (
+										<p key={item.key}>
 											{item.record.wins}-{item.record.losses}
 										</p>
 									))}

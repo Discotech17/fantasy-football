@@ -1,16 +1,17 @@
 import { Champ, Standings, History } from './Component'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState } from 'react'
 import './App.css'
 
 function App() {
 	const [theme, setTheme] = useState('light')
 
-	function switchTheme() {
+	/*function switchTheme() {
 		const newTheme = theme === 'light' ? 'dark' : 'light'
 		document.body.style.backgroundColor =
 			newTheme === 'light' ? 'white' : '#2a2a2a'
 		setTheme(newTheme)
-	}
+	}*/
 
 	return (
 		<div className="appContainer" data-theme={theme}>

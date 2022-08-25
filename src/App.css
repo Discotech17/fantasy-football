@@ -369,7 +369,7 @@ EVERYTHING AFTER HERE IS MOBILE
   }
 
   .divisionSwap:not(:active) {
-    animation: reveal 3s .05s linear forwards;
+    animation: reveal 1s .02s linear forwards;
   }
 
   .standingsRecordHeader {
