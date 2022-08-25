@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --background: white;
+  --text-primary: black;
+  --cardBG: #636363;
+  --text-secondary: royalblue;
+  --accent: purple;
+  --cornerSize: 200px;
+}
+
+[data-theme="dark"] {
+  --background: #2a2a2a;
+  --cardBG: #e5e5e5;
+  --text-primary: white;
+  --text-secondary: grey;
+  --accent: red;
+}
