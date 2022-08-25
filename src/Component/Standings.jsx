@@ -73,9 +73,7 @@ function Standings() {
 		<div className="standingsContainer">
 			{division ? (
 				<div className="standingsBoard">
-					<div className="standingsTitle">
-						<h1>Standings</h1>
-					</div>
+					<div className="standingsTitle">Standings</div>
 					{editing ? (
 						<div className="standingsUpdate">
 							<button
@@ -113,11 +111,11 @@ function Standings() {
 						onClick={editing ? null : () => setDivision(!division)}
 					>
 						<div className="standingsDivision">
-							<h2>East</h2>
+							<h2 className="standingsDivisionText">East</h2>
 						</div>
 						<div className="standingsRecordHeader">
-							<h3>Team</h3>
-							<h3>Record</h3>
+							<h3 className="standingsRecordHeader">Team</h3>
+							<h3 className="standingsRecordHeader">Record</h3>
 						</div>
 						<div className="standingRecordContainer">
 							<div className="standingsTeams">
@@ -172,9 +170,7 @@ function Standings() {
 				</div>
 			) : (
 				<div className="standingsBoard">
-					<div className="standingsTitle">
-						<h1>Standings</h1>
-					</div>
+					<div className="standingsTitle">Standings</div>
 					{editing ? (
 						<div className="standingsUpdate">
 							<button
@@ -212,11 +208,11 @@ function Standings() {
 						onClick={editing ? null : () => setDivision(!division)}
 					>
 						<div className="standingsDivision">
-							<h2>West</h2>
+							<h2 className="standingsDivisionText">West</h2>
 						</div>
 						<div className="standingsRecordHeader">
-							<h3>Team</h3>
-							<h3>Record</h3>
+							<h3 className="standingsRecordHeader">Team</h3>
+							<h3 className="standingsRecordHeader">Record</h3>
 						</div>
 						<div className="standingRecordContainer">
 							<div className="standingsTeams">

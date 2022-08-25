@@ -18,7 +18,7 @@ code {
   --cardBG: #636363;
   --text-secondary: royalblue;
   --accent: purple;
-  --cornerSize: 200px;
+  --cornerSize: 250px;
 }
 
 [data-theme="dark"] {

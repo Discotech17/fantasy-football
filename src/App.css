@@ -95,6 +95,18 @@ body {
   transform: translate(29px, -50%)
 }
 
+/*
+*********************************
+*********************************
+*********************************
+WEB BROWSER CSS
+*********************************
+*********************************
+*********************************
+*/
+
+@media screen and ( min-width: 601px ){
+  
 .champContainer {
   width: 80%;
   height: 80%;
@@ -142,9 +154,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 25%;
-  font-size: 25px;
+  margin-top: 10%;
+  height: 25%;
+  font-size: 100px;
   font-weight: 700;
+  background: linear-gradient(-45deg, #5433FF, #20BDFF, #A5FECB);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s linear infinite;
 }
 
 .champMessage {
@@ -154,8 +172,14 @@ body {
   align-items: center;
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 20%;
-  font-size: 20px;
+  margin-top: 5%;
+  height: 25%;
+  font-size: 45px;
+  background: linear-gradient(45deg, #5433FF, #20BDFF, #A5FECB);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s linear infinite;
 }
 
 .standings {}
@@ -167,16 +191,6 @@ body {
   background-color: var(--cardBG);
   border: 1px solid black;
   border-radius: 20px;
-}
-
-.trianglePage {
-  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-  background: var(--background);
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  bottom: 0;
-  right: 0;
 }
 
 .standingsContainer::after,
@@ -191,7 +205,7 @@ body {
 }
 
 .standingsContainer::after {
-  bottom: -1px;
+  bottom: -2px;
   right: -1px;
   width: var(--cornerSize);
   height: 2px;
@@ -202,51 +216,130 @@ body {
   right: -1px
 }
 
-.standingsBorderEast {
-  display: grid;
-  margin-top: 20px;
+.standingsBoard {
+  display: flexbox;
+  height: 100%;
+}
+
+.trianglePage {
+  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+  background: var(--background);
+  position: absolute;
+  z-index: 999;
+  width: 250px;
+  height: 250px;
+  bottom: 0;
+  right: 0;
 }
 
 .standingsTitle {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 0;
+  height: 20%;
+  font-size: 100px;
+  font-weight: 700;
 }
 
 .standingsDivision {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  
+  margin-top: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.standingsDivisionText {
+  font-size: 100px;
+}
+
+.divisionSwap {
+  height: 80%;
 }
 
 .standingsRecordHeader {
   display: inline-flex;
+  width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 50pxs;
+  font-size: 50px;
 }
 
-.standingsRecordContainer {
+.standingRecordContainer {
   display: flex;
+  width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 25px;
+  padding-top: 2%;
 }
 
 .standingsTeams {
-  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 25px;
+  font-weight: 500;
 }
 
-.standingsRecords {}
+* {
+  outline: 1px solid red
+}
+
+.standingsRecords {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 25px;
+  font-weight: 500;
+}
+}
+
+.standingsUpdate {
+  width: 25%;
+  height: 5%;
+  display: flex;
+  position: absolute;
+  top: 7.5%;
+  right: 5%;
+  background-color: transparent;
+  border: none;
+}
+
+.editStandings {
+  width: 25%;
+  height: 5%;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  position: absolute;
+  top: 7.5%;
+  left: 5%;
+}
 
 /*
 *********************************
 *********************************
+*********************************
+END OF WEB BROWSER
+*********************************
+*********************************
+*********************************
+*/
+
+
+/*
+*********************************
+*********************************
+*********************************
 INTO MOBILE CSS 
 EVERYTHING AFTER HERE IS MOBILE
+*********************************
 *********************************
 *********************************
 */
@@ -294,6 +387,39 @@ EVERYTHING AFTER HERE IS MOBILE
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 5s linear infinite;
+  }
+
+  .triangleContainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-right: 25px;
+  }
+  
+  .triangleScroll {
+    background: linear-gradient(-45deg, #ee7752, #e737ce, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    width: 45px;
+    height: 45px;
+    clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
+  }
+  
+  .two {
+    width: 35px;
+    height: 35px;
+    clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
+    }
+  
+  .three {
+    width: 25px;
+    height: 25px;
+    clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
   }
 
   .standings {
