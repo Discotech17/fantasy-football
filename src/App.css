@@ -6,13 +6,15 @@ body {
 }
 
 @keyframes reveal {
-  0% { 
+  0% {
     transform: none;
     opacity: 0;
   }
+
   50% {
     opacity: .5;
   }
+
   100% {
     transform: none;
     opacity: 1;
@@ -20,12 +22,14 @@ body {
 }
 
 @keyframes gradient {
-  0% { 
+  0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -105,221 +109,443 @@ WEB BROWSER CSS
 *********************************
 */
 
-@media screen and ( min-width: 601px ){
-  
-.champContainer {
-  width: 80%;
-  height: 80%;
-  position: relative;
-  background: var(--cardBG);
-  border: 1px solid black;
-  border-radius: 20px;
-}
+@media screen and (min-width: 601px) {
 
-.triangleContainer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 25px;
-  margin-right: 25px;
-}
+  /*
+  *************************************
+  *************************************
+  *************************************
+  WEB CHAMP SECTION
+  *************************************
+  *************************************
+  *************************************
+  */
 
-.triangleScroll {
-  background: linear-gradient(-45deg, #ee7752, #e737ce, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
-  width: 45px;
-  height: 45px;
-  clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
-}
-
-.two {
-  width: 35px;
-  height: 35px;
-  clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
+  .champContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    background: var(--cardBG);
+    border: 1px solid black;
+    border-radius: 20px;
   }
 
-.three {
-  width: 25px;
-  height: 25px;
-  clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
-}
+  .triangleContainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-right: 25px;
+  }
+
+  .triangleScroll {
+    background: linear-gradient(-45deg, #ee7752, #e737ce, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    width: 45px;
+    height: 45px;
+    clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
+  }
+
+  .two {
+    width: 35px;
+    height: 35px;
+    clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
+  }
+
+  .three {
+    width: 25px;
+    height: 25px;
+    clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
+  }
+
+  .champName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    height: 25%;
+    font-size: 100px;
+    font-weight: 700;
+    background: linear-gradient(-45deg, #5433FF, #20BDFF, #A5FECB);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s linear infinite;
+  }
+
+  .champMessage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    height: 25%;
+    font-size: 45px;
+    background: linear-gradient(45deg, #5433FF, #20BDFF, #A5FECB);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s linear infinite;
+  }
+
+  /*
+  *************************************
+  *************************************
+  *************************************
+  WEB SECTION SECTION
+  *************************************
+  *************************************
+  *************************************
+  */
+
+  .standingsContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    background-color: var(--cardBG);
+    border: 1px solid black;
+    border-radius: 20px;
+  }
+
+  .standingsContainer::after,
+  .standingsContainer::before {
+    background-color: white;
+    content: "";
+    display: block;
+    height: var(--cornerSize);
+    border-top-right-radius: 5px;
+    position: absolute;
+    width: 2px;
+  }
+
+  .standingsContainer::after {
+    bottom: -2px;
+    right: -1px;
+    width: var(--cornerSize);
+    height: 2px;
+  }
+
+  .standingsContainer::before {
+    bottom: -1px;
+    right: -1px
+  }
+
+  .standingsBoard {
+    display: flexbox;
+    height: 100%;
+  }
+
+  .trianglePage {
+    clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+    background: var(--background);
+    position: absolute;
+    z-index: 999;
+    width: 250px;
+    height: 250px;
+    bottom: 0;
+    right: 0;
+  }
+
+  .standingsTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    height: 20%;
+    font-size: 100px;
+    font-weight: 700;
+  }
+
+  .standingsDivision {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+
+  .standingsDivisionText {
+    font-size: 100px;
+  }
+
+  .divisionSwap {
+    height: 80%;
+  }
+
+  .standingsRecordHeader {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 50px;
+  }
+
+  .standingRecordContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 2%;
+  }
+
+  .standingsTeams {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  .standingsRecords {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  .standingsUpdate {
+    width: 25%;
+    height: 5%;
+    display: flex;
+    position: absolute;
+    top: 7.5%;
+    right: 5%;
+    background-color: transparent;
+    border: none;
+  }
+
+  .editStandings {
+    width: 25%;
+    height: 5%;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    position: absolute;
+    top: 7.5%;
+    left: 5%;
+  }
+
+  /*
+  *************************************
+  *************************************
+  *************************************
+  WEB HISTORY SECTION
+  *************************************
+  *************************************
+  *************************************
+  */
+
+  .historyContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    background-color: var(--cardBG);
+    border: 1px solid black;
+    border-radius: 20px;
+  }
+
+  .historyTitle {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+  } 
+
+  .historySeasonContainer {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .historySeasonNumber {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .season {
+    display: flex;
+    width: 100%;
+    height: 15%;
+  }
+
+  .seasonNumber {
+    font-size: 50px;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .seasonActive {
+    font-size: 75px;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .seasonInformation {
+    width: 100%;
+    height: 20%;
+    display: flex;
+  }
+
+  .champID {
+    font-size: 20px;
+    display: block;
+    position: relative;
+    writing-mode: vertical-lr;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 1.5%;
+    width: 5%;
+    font-weight: 900;
+  }
+
+  .seasonChampContainer {
+    width: 30%;
+    height: 100%;
+    position: relative;
+  }
+
+  .champTeamName {
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .champSection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    justify-content: space-around;
+  }
+
+  .historyChampName {
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .champRecord {
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .seasonSecondPlace {
+    width: 30%;
+    height: 100%;
+    position: relative;
+  }
+
+  .secondPlaceTeamName {
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .secondPlaceSection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    justify-content: space-around;
+  }
+
+  .secondPlaceName {
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .secondPlaceRecord {
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .seasonThirdPlace {
+    width: 30%;
+    height: 100%;
+    position: relative;
+  }
+
+  .thirdPlaceTeamName {
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thirdPlaceSection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    justify-content: space-around;
+  }
+
+  .thirdPlaceName {
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thirdPlaceRecord {
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 
-.champName {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10%;
-  height: 25%;
-  font-size: 100px;
-  font-weight: 700;
-  background: linear-gradient(-45deg, #5433FF, #20BDFF, #A5FECB);
-  background-size: 400% 400%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 5s linear infinite;
-}
 
-.champMessage {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 5%;
-  height: 25%;
-  font-size: 45px;
-  background: linear-gradient(45deg, #5433FF, #20BDFF, #A5FECB);
-  background-size: 400% 400%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 5s linear infinite;
-}
 
-.standings {}
-
-.standingsContainer {
-  width: 80%;
-  height: 80%;
-  position: relative;
-  background-color: var(--cardBG);
-  border: 1px solid black;
-  border-radius: 20px;
-}
-
-.standingsContainer::after,
-.standingsContainer::before {
-  background-color: white;
-  content: "";
-  display: block;
-  height: var(--cornerSize);
-  border-top-right-radius: 5px;
-  position: absolute;
-  width: 2px;
-}
-
-.standingsContainer::after {
-  bottom: -2px;
-  right: -1px;
-  width: var(--cornerSize);
-  height: 2px;
-}
-
-.standingsContainer::before {
-  bottom: -1px;
-  right: -1px
-}
-
-.standingsBoard {
-  display: flexbox;
-  height: 100%;
-}
-
-.trianglePage {
-  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-  background: var(--background);
-  position: absolute;
-  z-index: 999;
-  width: 250px;
-  height: 250px;
-  bottom: 0;
-  right: 0;
-}
-
-.standingsTitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0;
-  height: 20%;
-  font-size: 100px;
-  font-weight: 700;
-}
-
-.standingsDivision {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0;
-  padding-top: 1%;
-  padding-bottom: 1%;
-}
-
-.standingsDivisionText {
-  font-size: 100px;
-}
-
-.divisionSwap {
-  height: 80%;
-}
-
-.standingsRecordHeader {
-  display: inline-flex;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 50px;
-}
-
-.standingRecordContainer {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-top: 2%;
-}
-
-.standingsTeams {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  font-size: 25px;
-  font-weight: 500;
-}
-
-* {
-  outline: 1px solid red
-}
-
-.standingsRecords {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  font-size: 25px;
-  font-weight: 500;
-}
-}
-
-.standingsUpdate {
-  width: 25%;
-  height: 5%;
-  display: flex;
-  position: absolute;
-  top: 7.5%;
-  right: 5%;
-  background-color: transparent;
-  border: none;
-}
-
-.editStandings {
-  width: 25%;
-  height: 5%;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  position: absolute;
-  top: 7.5%;
-  left: 5%;
+  * {
+    outline: 1px solid red;
+  }
 }
 
 /*
@@ -346,7 +572,15 @@ EVERYTHING AFTER HERE IS MOBILE
 
 @media screen and (max-width: 600px) {
 
-  .champ {}
+  /*
+  *************************************
+  *************************************
+  *************************************
+  MOBILE CHAMP SECTION
+  *************************************
+  *************************************
+  *************************************
+  */
 
   .champContainer {
     width: 80%;
@@ -400,7 +634,7 @@ EVERYTHING AFTER HERE IS MOBILE
     margin-bottom: 25px;
     margin-right: 25px;
   }
-  
+
   .triangleScroll {
     background: linear-gradient(-45deg, #ee7752, #e737ce, #23a6d5, #23d5ab);
     background-size: 400% 400%;
@@ -409,21 +643,28 @@ EVERYTHING AFTER HERE IS MOBILE
     height: 45px;
     clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
   }
-  
+
   .two {
     width: 35px;
     height: 35px;
     clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
-    }
-  
+  }
+
   .three {
     width: 25px;
     height: 25px;
     clip-path: polygon(100% 0%, 0% 0%, 50% 100%);
   }
 
-  .standings {
-  }
+    /*
+  *************************************
+  *************************************
+  *************************************
+  MOBILE STANDINGS SECTION
+  *************************************
+  *************************************
+  *************************************
+  */
 
   .standingsContainer {
     width: 80%;
@@ -433,7 +674,7 @@ EVERYTHING AFTER HERE IS MOBILE
     border: 1px solid black;
     border-radius: 20px;
   }
-  
+
   .standingsContainer::after,
   .standingsContainer::before {
     background-color: white;
@@ -444,14 +685,14 @@ EVERYTHING AFTER HERE IS MOBILE
     position: absolute;
     width: 3px;
   }
-  
+
   .standingsContainer::after {
     bottom: -2px;
     right: -2px;
     width: 76px;
     height: 3px;
   }
-  
+
   .standingsContainer::before {
     bottom: -2px;
     right: -2px
@@ -559,6 +800,231 @@ EVERYTHING AFTER HERE IS MOBILE
     position: absolute;
     top: 7.5%;
     left: 5%;
+  }
+
+    /*
+  *************************************
+  *************************************
+  *************************************
+  MOBILE HISTORY SECTION
+  *************************************
+  *************************************
+  *************************************
+  */
+
+  * {
+    outline: 1px solid red;
+  }
+
+  .historyContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    background-color: var(--cardBG);
+    border: 1px solid black;
+    border-radius: 20px;
+  }
+
+  .historyTitle {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+  } 
+
+  .historySeasonContainer {
+    position: relative;
+    width: 100%;
+    height: 65%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .historySeasonNumber {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .season {
+    display: flex;
+    width: 100%;
+    height: 15%;
+  }
+
+  .seasonNumber {
+    font-size: 50px;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .seasonActive {
+    font-size: 75px;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .seasonInformation {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .champID {
+    font-size: 20px;
+    display: block;
+    position: relative;
+    writing-mode: vertical-lr;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 1.5%;
+    width: 10%;
+    font-weight: 900;
+  }
+
+  .seasonChampContainer {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .champTeamName {
+    font-size: 20px;
+    font-weight: 900;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .champSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .historyChampName {
+    font-size: 30px;
+    font-weight: 900;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .champRecord {
+    font-size: 30px;
+    font-weight: 900;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .seasonSecondPlace {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secondPlaceTeamName {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .secondPlaceSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .secondPlaceName {
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .secondPlaceRecord {
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .seasonThirdPlace {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thirdPlaceTeamName {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .thirdPlaceSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thirdPlaceName {
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thirdPlaceRecord {
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 }
